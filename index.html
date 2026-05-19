@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quite Interesting</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --cream: #f5f0e8;
+      --ink: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #d4c9a8;
+    }
+
+    body {
+      background-color: var(--ink);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at center, #0d0d1a 0%, #000 100%);
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .stars::before, .stars::after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      border-radius: 50%;
+      box-shadow:
+        120px 50px 0 rgba(201,168,76,0.4),
+        300px 200px 0 rgba(255,255,255,0.3),
+        500px 80px 0 rgba(255,255,255,0.2),
+        700px 300px 0 rgba(201,168,76,0.3),
+        900px 150px 0 rgba(255,255,255,0.15),
+        1100px 400px 0 rgba(255,255,255,0.25),
+        200px 500px 0 rgba(201,168,76,0.2),
+        800px 600px 0 rgba(255,255,255,0.1),
+        1300px 100px 0 rgba(255,255,255,0.3),
+        60px 700px 0 rgba(201,168,76,0.15),
+        1500px 500px 0 rgba(255,255,255,0.2),
+        400px 750px 0 rgba(255,255,255,0.15);
+    }
+
+    .container {
+      max-width: 680px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      opacity: 0.85;
+    }
+
+    .plaque {
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 3.5rem 3rem;
+      background: rgba(245, 240, 232, 0.03);
+      backdrop-filter: blur(2px);
+      position: relative;
+    }
+
+    .plaque::before, .plaque::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border: 1px solid var(--gold);
+    }
+    .plaque::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+    .plaque::after  { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+    .quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      line-height: 0.5;
+      color: var(--gold);
+      opacity: 0.4;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      line-height: 1.45;
+      color: var(--cream);
+      font-style: italic;
+      letter-spacing: 0.01em;
+    }
+
+    .attribution {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    .attribution span {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-top: 0.35rem;
+      font-style: italic;
+      text-transform: none;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 2.5rem auto;
+      opacity: 0.4;
+    }
+
+    .honoree {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+      letter-spacing: 0.08em;
+    }
+
+    .honoree small {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .footnote {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(212, 201, 168, 0.15);
+      font-size: 0.68rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    .footnote strong {
+      color: rgba(245,240,232,0.4);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    .footnote a {
+      color: rgba(201,168,76,0.5);
+      text-decoration: none;
+    }
+
+    .footnote a:hover { color: var(--gold); }
+
+    .seal {
+      margin-top: 3rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.25);
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="container">
+    <p class="eyebrow">A Certificate of Recognition</p>
+
+    <div class="plaque">
+      <span class="quote-mark">&ldquo;</span>
+      <p class="quote">You also seem quite interesting,<br>I must say.</p>
+      <p class="attribution">
+        — Occams-hairbrush1
+        <span>r/portlandme · May 19, 2026</span>
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="honoree">
+        André Maurice Davis
+        <small>Was Found Interesting by One Person on the Internet</small>
+      </p>
+    </div>
+
+    <div class="footnote">
+      <strong>† Context, for posterity:</strong>
+      A Reddit thread in <em>r/portlandme</em> was posted calling out an unnamed man at the Maine Mall parking lot who had reportedly been approaching women and asking them to marry him. The OP deemed this "sad and pathetic." In the ensuing comment section — an arena of judgment, sympathy, and mild outrage — someone turned their gaze, unprompted, and found one commenter to be quite interesting. That commenter was the honoree of this page. The thread lives <a href="https://www.reddit.com/r/portlandme/comments/1tht9vj/maine_mall_dude/" target="_blank" rel="noopener">here</a>.
+    </div>
+
+    <p class="seal">Established 2026 &nbsp;·&nbsp; York Harbor, Maine</p>
+  </div>
+</body>
+</html>
